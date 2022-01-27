@@ -1,0 +1,20 @@
+/* RSD Webpage CSS
+   Copyright (C) 2022 bellrise */
+
+body {
+    font-family: monospace;
+    font-size: 1.2em;
+    margin: 2vw;
+}
+
+table {
+    width: 50em;
+}
+
+th {
+    text-align: left;
+}
+
+p {
+    white-space: pre-wrap;
+}

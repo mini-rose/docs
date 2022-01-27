@@ -1,0 +1,10 @@
+RSD 3: cmdline /* not finished */
+--------------
+
+Copyright (C) 2022 bellrise <bellrise.dev@gmail.com>
+
+
+Abstract
+
+    This document describes the look & feel of command line arguments in any
+    CLI programs.
