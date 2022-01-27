@@ -6,14 +6,14 @@
 not_specs='generate.sh|readme'
 specs=$(find . -maxdepth 1 -type f | grep -Ev $not_specs | sed 's/\.\///')
 
-rm -rf webpage/spec
-mkdir -p webpage/spec
+rm -rf docs/spec
+mkdir -p docs/spec
 
 for spec in $specs; do
-    p=webpage/spec/$spec.html
+    p=docs/spec/$spec.html
     echo Generating $p
     num=$(echo $spec | awk -F '-' '{ print $2 }')
-    cat webpage/gen_html_head.html | sed "s/((RSD_NUM))/$num/" > $p
+    cat docs/gen_html_head.html | sed "s/((RSD_NUM))/$num/" > $p
     echo '<h2>' >> $p
     cat $spec | head -n 1 >> $p
     echo '</h2>\n<p>' >> $p
@@ -22,5 +22,5 @@ for spec in $specs; do
         sed 's/\&/\&amp;/'  |\
         sed 's/</\&lt;/'    |\
         sed 's/>/\&gt;/' >> $p
-    cat webpage/gen_html_foot.html >> $p
+    cat docs/gen_html_foot.html >> $p
 done
