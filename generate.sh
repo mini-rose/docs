@@ -10,9 +10,9 @@ rm -rf docs/spec
 mkdir -p docs/spec
 
 for spec in $specs; do
-    p=docs/spec/$spec.html
+	num=$(echo $spec | awk -F '-' '{ print $(NF) }')
+    p=docs/rsd/$num.html
     echo Generating $p
-    num=$(echo $spec | awk -F '-' '{ print $2 }')
     cat docs/gen_html_head.html | sed "s/((RSD_NUM))/$num/" > $p
     echo '<h2>' >> $p
     cat $spec | head -n 1 >> $p
