@@ -10,7 +10,7 @@ rm -rf docs/spec
 mkdir -p docs/spec
 
 for spec in $specs; do
-	num=$(echo $spec | awk -F '-' '{ print $(NF) }')
+    num=$(echo $spec | awk -F '-' '{ print $(NF) }')
     p=docs/rsd/$num.html
     echo Generating $p
     cat docs/gen_html_head.html | sed "s/((RSD_NUM))/$num/" > $p
@@ -19,8 +19,9 @@ for spec in $specs; do
     echo '</h2>\n<p>' >> $p
 
     cat $spec | tail -n +4  |\
-        sed 's/\&/\&amp;/'  |\
-        sed 's/</\&lt;/'    |\
-        sed 's/>/\&gt;/' >> $p
+        sed 's/\&/\&amp;/g' |\
+        sed 's/</\&lt;/g'   |\
+        sed 's/>/\&gt;/g'   |\
+        sed 's/&lt;\(https*:\/\/.*\)&gt;/<a href="\1">\1<\/a>/' >> $p
     cat docs/gen_html_foot.html >> $p
 done
