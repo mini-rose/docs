@@ -1,17 +1,10 @@
 Reference Specification Documents
-=================================
+---------------------------------
 
-Copyright (c) 2022 bellrise <bellrise.dev@gmail.com>
+Copyright (c) 2022 mini-rose
 
 This is the list of all current Reference Specification Documents (RSDs).
-All my tools & code follow these specifications (when defined), in order
-to achieve a proper level of standardization. Apart from just rules, these
-documents show real-life examples to make them easier to understand.
+All code written for mini-rose follows these specifications (when defined),
+in order to achieve a proper level of standardization.
 
-In order to reference a rule or specification in code, you may provide
-a comment above the code section:
-
-    /* RSD 10/2a: provide atleast a 4095 char line buffer */
-
-
-For browsing, see the webpage at <https://bellrise.github.io/spec>.
+For browsing, see the webpage at <https://mini-rose.github.io/spec>.

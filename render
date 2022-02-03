@@ -1,9 +1,8 @@
 #!/bin/sh
 
-# Generate HTML pages from the specifications a directory above.
-# Copyright (C) 2022 bellrise
+# Generate HTML pages from the specifications.
 
-not_specs='generate.sh|readme'
+not_specs='render|readme'
 specs=$(find . -maxdepth 1 -type f | grep -Ev $not_specs | sed 's/\.\///')
 
 rm -rf docs/spec
