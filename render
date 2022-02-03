@@ -12,7 +12,7 @@ for spec in $specs; do
     num=$(echo $spec | awk -F '-' '{ print $(NF) }')
     p=docs/rsd/$num.html
     echo Generating $p
-    cat docs/gen_html_head.html | sed "s/((RSD_NUM))/$num/" > $p
+    cat docs/_head.html | sed "s/((RSD_NUM))/$num/" > $p
     echo '<h2>' >> $p
     cat $spec | head -n 1 >> $p
     echo '</h2>\n<p>' >> $p
@@ -22,5 +22,5 @@ for spec in $specs; do
         sed 's/</\&lt;/g'   |\
         sed 's/>/\&gt;/g'   |\
         sed 's/&lt;\(https*:\/\/.*\)&gt;/<a href="\1">\1<\/a>/' >> $p
-    cat docs/gen_html_foot.html >> $p
+    cat docs/_foot.html >> $p
 done
