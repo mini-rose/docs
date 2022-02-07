@@ -10,7 +10,7 @@
 RSD 10: buildfile
 </h2>
 <p>
-Copyright (c) 2022 mini-rose
+Copyright (c) 2022 mini-rose                                          Revision 2
 
 
 Abstract
@@ -98,15 +98,15 @@ Abstract
     targets that have special functionality. Only if they can be found in the
     buildfile, the three targets:
 
-    (c) @__default
+    (c) @default
         Calling the tool without specifying any target will select this target.
         If the tool should continue after this target is run is implementation
         defined.
 
-    (d) @__setup
+    (d) @before
         Is ran before anything else happens.
 
-    (e) @__finish
+    (e) @after
         Is ran after everything has happened.
 </p>
 </body>
