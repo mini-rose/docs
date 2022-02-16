@@ -2,7 +2,7 @@
 
 # Generate HTML pages from the specifications.
 
-not_specs='render|readme'
+not_specs='render|readme|software'
 specs=$(find . -maxdepth 1 -type f | grep -Ev $not_specs | sed 's/\.\///')
 
 rm -rf docs/spec
@@ -24,3 +24,15 @@ for spec in $specs; do
         sed 's/&lt;\(https*:\/\/.*\)&gt;/<a href="\1">\1<\/a>/' >> $p
     cat docs/_foot.html >> $p
 done
+
+# Set the software.html page
+cat docs/_software_head.html > docs/software.html
+echo '<p><b>' >> docs/software.html
+cat software | head -n 1 >> docs/software.html
+echo '</b></p><p>' >> docs/software.html
+cat software | tail -n +3   |\
+    sed 's/\&/\&amp;/g'     |\
+    sed 's/</\&lt;/g'       |\
+    sed 's/>/\&gt;/g'       |\
+    sed 's/&lt;\(https*:\/\/.*\)&gt;/<a href="\1">\1<\/a>/g' >> docs/software.html
+cat docs/_software_foot.html >> docs/software.html

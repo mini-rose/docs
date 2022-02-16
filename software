@@ -1,0 +1,5 @@
+name            source                                      desc
+
+dwm             <https://dwm.suckless.org>                  Window manager by suckless
+fzf             <https://github.com/junegunn/fzf>           Command line fuzzy finder
+utf.8           <https://github.com/sheredom/utf8.h>        UTF-8 string library
