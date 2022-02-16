@@ -1,5 +1,8 @@
-name            source                                      desc
+name            source                                    desc
 
+chibicc         <https://github.com/rui314/chibicc>         Small C compiler
 dwm             <https://dwm.suckless.org>                  Window manager by suckless
 fzf             <https://github.com/junegunn/fzf>           Command line fuzzy finder
+ripgrep         <https://github.com/BurntSushi/ripgrep>     Fast grep + fzf integration
+st              <https://st.suckless.org>                   Simple terminal implementation for X
 utf.8           <https://github.com/sheredom/utf8.h>        UTF-8 string library
