@@ -1,4 +1,4 @@
-/* Small script for handling events on the website.
+/* Handle the theme-change button.
    Copyright (c) 2022 mini-rose */
 
 function get(query) {
