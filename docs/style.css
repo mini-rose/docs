@@ -2,19 +2,32 @@
    Copyright (c) 2022 mini-rose */
 
 body {
-    font-family: monospace;
-    font-size: 1.2em;
-    margin: 2vw;
+	font-family: monospace;
+	font-size: 1.2em;
+	margin: 2vw;
 }
 
 table {
-    width: 50em;
+	width: 50em;
 }
 
 th {
-    text-align: left;
+	text-align: left;
+}
+
+#theme-change:hover {
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 p {
-    white-space: pre-wrap;
+	white-space: pre-wrap;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
 }

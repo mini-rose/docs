@@ -25,6 +25,8 @@ for spec in $specs; do
     cat docs/_foot.html >> $p
 done
 
+echo "Generating docs/software.html"
+
 # Set the software.html page
 cat docs/_software_head.html > docs/software.html
 echo '<p><b>' >> docs/software.html
