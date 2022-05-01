@@ -1,7 +1,16 @@
-RSD 10: buildfile
------------------
-
-Copyright (c) 2022 mini-rose                                          Revision 2
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RSD 10</title>
+    <link rel="stylesheet" href="../style.css">
+    <script defer src="../handlers.js"></script>
+</head>
+<body onload="changeTheme()">
+    <a href="../index.html">&lt;&lt; Index</a>
+    <span id="theme-change">(Dark theme)</span>
+<h2>RSD 10: buildfile</h2>
+<p>
+Copyright (c) 2022 mini-rose                                          Revision 3
 
 
 Abstract
@@ -48,6 +57,19 @@ Abstract
 
         Some parsers may offer the ability to quote the target name, allowing
         for whitespace characters in it. This is not required.
+
+    (e) Multi-line targets
+
+        Since revision 3 a buildfile can have targets placed on new lines with
+        preceding whitespace without the need to escape the newline in order to
+        place another command. For example:
+
+            @target_name sh-command
+                another_command
+                yet another command
+
+        These commands are guaranteed to run in one context, meaning you may set
+        a variable and then read it in any later command in the same target.
 
 
 2. Lines
@@ -99,3 +121,6 @@ Abstract
 
     (e) @after
         Is ran after everything has happened.
+</p>
+</body>
+</html>

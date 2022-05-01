@@ -1,4 +1,10 @@
-name            source                                    desc
+# Recommended software
+
+This is a list of good software, containing standalone programs &amp; libraries.
+Good software meaning it aligns with atleast a part of our minimalistic mindset.
+All entries are alphabetically sorted by their name.
+
+name            source                                      desc
 
 chibicc         <https://github.com/rui314/chibicc>         Small C compiler
 dwm             <https://dwm.suckless.org>                  Window manager by suckless
