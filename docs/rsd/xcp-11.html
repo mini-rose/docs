@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RSD 11</title>
+    <link rel="stylesheet" href="../style.css">
+    <script defer src="../handlers.js"></script>
+</head>
+<body onload="changeTheme()">
+    <a href="../index.html">&lt;&lt; Index</a>
+    <span id="theme-change">(Dark theme)</span>
+<h2>RSD 11: XCP</h2>
+<p>
+Copyright (c) 2022 mini-rose
+
+
+Abstract
+
+    This document describes the XCloud Protocol, how it should work and what
+    a server & client should reply depending on the input. Communication between
+    both parties is split into packets, which are easier to handle. They still
+    are sent over the TCP/IP network stack, but with custom application-level
+    packets.
+
+    The standard shown in this document defines the XCP version 1.
+
+
+1. Packet
+
+    The smallest unit of communication in this protocol is a packet. All data
+    is split into packets for easier handling and control. Each packet has the
+    same packet header, containing the type, version, userid & payloda size.
+
+        +------+------+-------------------------------------------------+
+        | offt | size | contains                                        |
+        +------+------+-------------------------------------------------+
+        |    0 |    1 | type of the packet                              |
+        |    1 |    1 | version of the protocol                         |
+        |    2 |    2 | size of the payload in bytes                    |
+        |    4 |    8 | user ID, required for some transactions         |
+        |   12 |  ... | packet payload starts here                      |
+        +------+------+-------------------------------------------------+
+
+2. Protocol
+
+    /* todo */
+
+
+2. User ID
+
+    Each device is assigned a unique user ID, which the device then needs to store
+    to send files & messages later on. Each new client, in order to acquire such
+    ID should send a XCP_NEW packet to the server, requesting a new ID along with
+    passing a sufficient username to be used.
+
+    Each user ID is exactly 8 bytes, with each byte meaning a specific thing.
+
+        +------+------+-------------------------------------------------+
+        | offt | size | contains                                        |
+        +------+------+-------------------------------------------------+
+        |    0 |    1 | magic byte, 0x88 for a valid user ID            |
+        |    1 |    3 | last 3 bytes of the time of creation            |
+        |    4 |    4 | random bytes                                    |
+        +------+------+-------------------------------------------------+
+</p>
+</body>
+</html>
