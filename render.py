@@ -22,6 +22,7 @@ def replace_urls(content: str) -> str:
     for f in found:
         n = f'<a href="{f[1:-1]}">&lt;{f[1:-1]}&gt;</a>'
         content = content.replace(f, n)
+
     return content
 
 
@@ -72,10 +73,16 @@ def parse_rsd(path: str) -> dict:
         source = f.readlines()
 
     title = 'RSD ' + path.split('-')[-1]
+
     content = f'<h2>{source[0].strip()}</h2>'
     source = source[2:]
-
     source = ''.join(source)
+
+    found = re.findall(r'<\w+>', source)
+    for f in found:
+        n = f'&lt;{f[1:-1]}&gt;'
+        source = source.replace(f, n)
+
     content += f'\n<p>{source}</p>'
 
     return {'title': title, 'content': content}

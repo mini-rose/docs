@@ -40,12 +40,13 @@ Abstract
         |   12 |  ... | packet payload starts here                      |
         +------+------+-------------------------------------------------+
 
-2. Protocol
-
-    /* todo */
+2. Packet types
 
 
-2. User ID
+3. Protocol version
+
+
+4. User ID
 
     Each device is assigned a unique user ID, which the device then needs to store
     to send files & messages later on. Each new client, in order to acquire such
@@ -57,10 +58,13 @@ Abstract
         +------+------+-------------------------------------------------+
         | offt | size | contains                                        |
         +------+------+-------------------------------------------------+
-        |    0 |    1 | magic byte, 0x88 for a valid user ID            |
-        |    1 |    3 | last 3 bytes of the time of creation            |
+        |    0 |    4 | epoch time of ID creation, in seconds           |
         |    4 |    4 | random bytes                                    |
         +------+------+-------------------------------------------------+
+
+    You can get the epoch time of creation in C using a simple `time(NULL)`.
+
+5. Payload
 </p>
 </body>
 </html>

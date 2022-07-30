@@ -72,7 +72,7 @@ Abstract
     is the first line of the usage page and it tells the user how to use the
     command.
 
-        usage: program [-hv] <file>
+        usage: program [-hv] &lt;file&gt;
 
     This example usage line tells the user that "program" can be called with the
     optional -h and -v flags, and the required file argument. (a) Single
@@ -80,21 +80,21 @@ Abstract
     chars being alphabetically sorted.
 
     (b) Required arguments are surrouned with lower than and greater than signs
-    (<arg>). If there arguments are not prefixed with a flag, they must be
+    (&lt;arg&gt;). If there arguments are not prefixed with a flag, they must be
     interpreted positionally, meaning no matter the order of the arguments, the
     first argument will always be the first positional argument represented in
     the usage line.
 
     (c) Long options should be placed in their respective blocks, for example:
 
-        usage: program [-hv] [--help] [--version] <file>
+        usage: program [-hv] [--help] [--version] &lt;file&gt;
 
     (d) If the program chooses to do so, it may provide an extended usage page
     which contains information about all the flags the user may use for the
     program. The extended usage page for the usage line above may look like
     this:
 
-        usage: program [-hv] [--help] [--version] <file>
+        usage: program [-hv] [--help] [--version] &lt;file&gt;
 
         This program does literally nothing.
 
@@ -105,10 +105,10 @@ Abstract
     The whole page is split into 3 sections: the already explained usage line,
     a short sentence about the program itself, and the option list. The option
     list must begin with listing all the required positional (and named)
-    arguments (in this case <file>). After that all flags must be alphabetically
+    arguments (in this case &lt;file&gt;). After that all flags must be alphabetically
     listed. In case the option takes an argument, the syntax is the following:
 
-        -f, --file <file>   path to a file
+        -f, --file &lt;file&gt;   path to a file
 
     This means that the "-f" or "--file" option must be provided a single value,
     in this case being some arbitrary path to a file. The whole option section
