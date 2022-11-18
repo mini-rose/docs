@@ -100,5 +100,5 @@ def create_file_group(name, parse_f):
         print(f'Created: docs/{name}/{file}.html')
 
 
-create_file_group('doc', parse_doc)
+create_file_group('pages', parse_doc)
 create_file_group('rsd', parse_rsd)
