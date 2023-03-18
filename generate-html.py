@@ -71,20 +71,19 @@ def list_dir_recursive(dir: str) -> list:
 files = sorted(list_dir_recursive('.'))
 links = {}
 
-if not os.path.exists('docs/html'):
+if not os.path.exists('docs'):
     os.mkdir('docs')
-    os.mkdir('docs/html')
 
 for doc in files:
     if not doc.endswith('.rst'):
         continue
-    if doc.startswith('docs/html'):
+    if doc.startswith('docs'):
         continue
 
     basename = doc.rsplit('.', 1)[0]
-    dest = f'docs/html/{basename}.html'
+    dest = f'docs/{basename}.html'
 
-    move_backs = basename.count('/') + 1
+    move_backs = basename.count('/')
 
     dest_dir = os.path.dirname(dest)
     if not os.path.exists(dest_dir):
@@ -116,7 +115,7 @@ for doc in files:
         f.write(html)
 
     # Try to read :Description: and :Name: from the .rst file to get the symbols
-    link = f'<a href="html/{basename}.html">'
+    link = f'<a href="{basename}.html">'
     name = ''
     desc = ''
 
