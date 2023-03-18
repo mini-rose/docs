@@ -71,17 +71,18 @@ def list_dir_recursive(dir: str) -> list:
 files = sorted(list_dir_recursive('.'))
 links = {}
 
-if not os.path.exists('html'):
-    os.mkdir('html')
+if not os.path.exists('docs/html'):
+    os.mkdir('docs')
+    os.mkdir('docs/html')
 
 for doc in files:
     if not doc.endswith('.rst'):
         continue
-    if doc.startswith('html'):
+    if doc.startswith('docs/html'):
         continue
 
     basename = doc.rsplit('.', 1)[0]
-    dest = f'html/{basename}.html'
+    dest = f'docs/html/{basename}.html'
 
     move_backs = basename.count('/') + 1
 
@@ -201,5 +202,5 @@ index_source = f"""
 </html>
 """
 
-with open('index.html', 'w') as f:
+with open('docs/index.html', 'w') as f:
     f.write(index_source)
