@@ -3,7 +3,7 @@ Slab allocator
 
 :Header: Copyright (c) 2023 mini-rose
 :Name: slab
-:Description: Slab allocator
+:Desc: Slab allocator
 
 
 An important topic for any C program is memory allocations, which has become

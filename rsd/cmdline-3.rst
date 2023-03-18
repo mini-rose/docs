@@ -3,7 +3,7 @@ RSD 3: cmdline
 
 :Header: Copyright (c) 2022-2023 mini-rose
 :Name: cmdline-3
-:Description: Program command line
+:Desc: Program command line
 :Revision: 2
 
 

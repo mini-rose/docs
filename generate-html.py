@@ -114,17 +114,17 @@ for doc in files:
     with open(dest, 'w') as f:
         f.write(html)
 
-    # Try to read :Description: and :Name: from the .rst file to get the symbols
+    # Try to read :Desc: and :Name: from the .rst file to get the symbols
     link = f'<a href="{basename}.html">'
     name = ''
     desc = ''
 
     with open(doc) as f:
         for line in f.readlines():
-            if line.strip().startswith(':Name:'):
+            if not name and line.strip().startswith(':Name:'):
                 name = line[len(':Name:'):].strip()
-            if line.strip().startswith(':Description:'):
-                desc = line[len(':Description:'):].strip()
+            if not desc and line.strip().startswith(':Desc:'):
+                desc = line[len(':Desc:'):].strip()
 
     # Add the page name
     link += (name if name else doc) + '</a>'

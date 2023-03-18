@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<title>RSD 3: cmdline</title>
+<title>RSD 1: rsd</title>
 <style type="text/css">
 body {
     background-color: #dce0e8;
@@ -402,122 +402,82 @@ ul.auto-toc {
 </style>
 </head>
 <body>
-<div class="document" id="rsd-3-cmdline">
-<h1 class="title">RSD 3: cmdline</h1><a href="../index.html">&lt;&lt;&lt; Back</a>
+<div class="document" id="rsd-1-rsd">
+<h1 class="title">RSD 1: rsd</h1><a href="../index.html">&lt;&lt;&lt; Back</a>
 <table class="docinfo" frame="void" rules="none">
 <col class="docinfo-name" />
 <col class="docinfo-content" />
 <tbody valign="top">
-<tr class="header field"><th class="docinfo-name">Header:</th><td class="field-body">Copyright (c) 2022-2023 mini-rose</td>
+<tr class="header field"><th class="docinfo-name">Header:</th><td class="field-body">Copyright (c) 2023 mini-rose</td>
 </tr>
-<tr class="name field"><th class="docinfo-name">Name:</th><td class="field-body">cmdline-3</td>
+<tr class="name field"><th class="docinfo-name">Name:</th><td class="field-body">rsd-1</td>
 </tr>
-<tr class="desc field"><th class="docinfo-name">Desc:</th><td class="field-body">Program command line</td>
+<tr class="desc field"><th class="docinfo-name">Desc:</th><td class="field-body">Reference Specification Documents</td>
 </tr>
 <tr><th class="docinfo-name">Revision:</th>
-<td>2</td></tr>
+<td>1</td></tr>
 </tbody>
 </table>
 <div class="section" id="abstract">
 <h1>Abstract</h1>
-<p>This document describes the look &amp; feel of command line arguments in any CLI
-programs. In order to provide a simple work enviroment, the most used arguments
-&amp; flags have to be standardized, and that is what this document is for. Also
-contains some information about how these apps should behave when being passed
-such arguments.</p>
+<p>This document describes how RSDs (Reference Specification Documents) should be
+formed. When a specification arises in mini-rose, it is defined using a RSD and
+moved into the mini-rose/docs repository. Regular program documentation is
+still written in regular reStructuredText without any specific rules. RSDs must
+be very specific in what they define, so here is a couple rules that must be
+adhered to.</p>
 </div>
-<div class="section" id="definitions">
-<h1>1. Definitions</h1>
-<p>There are 2 types of command line options, a short and long option which
-can both take or not take a value. [a] A short command line option contains
-a single dash followed by a single upper or lowercase character:</p>
+<div class="section" id="layout">
+<h1>1. Layout</h1>
+<p>[a] The document is written in reStructuredText format, which allows for
+in-place reading and generating HTML pages from it. The first two lines contain
+the name and index number of the document:</p>
 <pre class="literal-block">
--h -F -v                            /-[A-z]/
+RSD &lt;number&gt;: &lt;name&gt;
+====================
 </pre>
-<p>[b] A long option is a lowercase name prefixed with two dashes. Note that
-there cannot be any upper case character in the name, and any spaces should
-be replaced with another dash:</p>
+<p>[b] After the title, some metadata is required to easily identify the document,
+like the header with copyright information, field with the full RSD name along
+with a description. Additionally, any changes in the document requires that the
+author increments a &quot;Revision&quot; counter so that a user will know exactly what
+version of the spec is used:</p>
 <pre class="literal-block">
---help --find-file --version        /--[a-z][a-z-]+/
+:Header: Copyright (c) &lt;year&gt; &lt;author&gt;
+:Name: &lt;name&gt;-&lt;id&gt;
+:Desc: &lt;short description&gt;
+:Revision: &lt;number&gt;
 </pre>
-<p>[c] A flag is a &quot;switch&quot; that does not take any value as an argument. And
-stores only a bool value if it has been found in the command line.</p>
-<p>[d] An option is a flag that takes an argument after a single space.
-Depending on the option, it may take many comma-seperated arguments:</p>
+<p>[c] After the metadata block, an &quot;Abstract&quot; is required summarizing the
+document itself. You may read the abstract in this document to get an idea of
+what it might look like.</p>
+<p>[d] The following sections should be numbered starting from 1, representing
+differing concepts:</p>
 <pre class="literal-block">
---param val1,val2
+1. Concept
+----------
 </pre>
-<p>[e] When a short option takes an argument, it may be placed in the same arg as
-the flag, or after a space. The following two options mean the same:</p>
+<p>[e] Each concept may have subsections, marked with square brackets and a lower
+case letter from the English alphabet, starting from a. If you run out of
+letters, the next subsections after 'z' should be named 'aa', 'ab' and so on:</p>
 <pre class="literal-block">
--fvalue
--f value
+[a] &lt;text&gt;
+[b] &lt;text&gt;
+...
+[z] &lt;text&gt;
+[aa] &lt;text&gt;
+[ab] &lt;text&gt;
+...
 </pre>
 </div>
-<div class="section" id="standard-flags">
-<h1>2. Standard flags</h1>
-<p>Each program should have a minimal working set of flags, which make the
-user experience more pleasant, because each program is similar to the other,
-which also alignes with the Unix philosophy.</p>
-<dl class="docutils">
-<dt>[a] -h, --help</dt>
-<dd>Only the &quot;--help&quot; flag is actually required, but it does not have to
-appear in the usage page. The short, &quot;-h&quot; flag on the other hand is not
-required in the program, but if it is present the extended usage page
-must show it and must open the usage page and exit the program after it.</dd>
-<dt>[b] -v, --version</dt>
-<dd>The lowercase &quot;v&quot; should always provide the program version. Some tools
-may offer 2 different version styles, for example &quot;-v&quot; showing only the
-version ID, while the long &quot;--version&quot; would show the string version,
-the author and copyright information.</dd>
-</dl>
-<p>TLDR: The only actual required flag is &quot;--help&quot;.</p>
-</div>
-<div class="section" id="usage-page">
-<h1>3. Usage page</h1>
-<p>The aforementioned usage page is required to contain the &quot;usage line&quot;, which
-is the first line of the usage page and it tells the user how to use the
-command:</p>
+<div class="section" id="referencing">
+<h1>2. Referencing</h1>
+<p>You may reference a certain subsection in code in a comment by providing a
+relevant ID, which may be represented in 2 forms:</p>
 <pre class="literal-block">
-usage: program [-hv] &lt;file&gt;
+/* RSD 3/2a */
+ or
+/* RSD cmdline/2a */
 </pre>
-<p>This example usage line tells the user that &quot;program&quot; can be called with the
-optional -h and -v flags, and the required file argument. (a) Single
-character flags are to be grouped into a single optional block, with the
-chars being alphabetically sorted.</p>
-<p>[b] Required arguments are surrouned with lower than and greater than signs
-(&lt;arg&gt;). If there arguments are not prefixed with a flag, they must be
-interpreted positionally, meaning no matter the order of the arguments, the
-first argument will always be the first positional argument represented in
-the usage line.</p>
-<p>[c] Long options should be placed in their respective blocks, for example:</p>
-<pre class="literal-block">
-usage: program [-hv] [--help] [--version] &lt;file&gt;
-</pre>
-<p>[d] If the program chooses to do so, it may provide an extended usage page
-which contains information about all the flags the user may use for the
-program. The extended usage page for the usage line above may look like
-this:</p>
-<pre class="literal-block">
-usage: program [-hv] [--help] [--version] &lt;file&gt;
-
-This program does literally nothing.
-
-  file              path to a file
-  -h, --help        show the usage page and exit
-  -v, --version     show the version and exit
-</pre>
-<p>The whole page is split into 3 sections: the already explained usage line,
-a short sentence about the program itself, and the option list. The option
-list must begin with listing all the required positional (and named)
-arguments (in this case &lt;file&gt;). After that all flags must be alphabetically
-listed. In case the option takes an argument, the syntax is the following:</p>
-<pre class="literal-block">
--f, --file &lt;file&gt;   path to a file
-</pre>
-<p>This means that the &quot;-f&quot; or &quot;--file&quot; option must be provided a single value,
-in this case being some arbitrary path to a file. The whole option section
-should be indented with 2 spaces.</p>
 </div>
 </div>
 </body>
