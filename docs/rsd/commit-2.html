@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<title>RSD 1: rsd</title>
+<title>RSD 2: commit</title>
 <style type="text/css">
 body {
     background-color: #dce0e8;
@@ -402,17 +402,17 @@ ul.auto-toc {
 </style>
 </head>
 <body>
-<div class="document" id="rsd-1-rsd">
-<h1 class="title">RSD 1: rsd</h1><a href="../index.html">&lt;&lt;&lt; Back</a>
+<div class="document" id="rsd-2-commit">
+<h1 class="title">RSD 2: commit</h1><a href="../index.html">&lt;&lt;&lt; Back</a>
 <table class="docinfo" frame="void" rules="none">
 <col class="docinfo-name" />
 <col class="docinfo-content" />
 <tbody valign="top">
 <tr class="header field"><th class="docinfo-name">Header:</th><td class="field-body">Copyright (c) 2023 bellrise</td>
 </tr>
-<tr class="name field"><th class="docinfo-name">Name:</th><td class="field-body">rsd-1</td>
+<tr class="name field"><th class="docinfo-name">Name:</th><td class="field-body">commit-2</td>
 </tr>
-<tr class="desc field"><th class="docinfo-name">Desc:</th><td class="field-body">Reference Specification Documents</td>
+<tr class="desc field"><th class="docinfo-name">Desc:</th><td class="field-body">Commit message style</td>
 </tr>
 <tr><th class="docinfo-name">Revision:</th>
 <td>1</td></tr>
@@ -420,64 +420,23 @@ ul.auto-toc {
 </table>
 <div class="section" id="abstract">
 <h1>Abstract</h1>
-<p>This document describes how RSDs (Reference Specification Documents) should be
-formed. When a specification arises in mini-rose, it is defined using a RSD and
-moved into the mini-rose/docs repository. Regular program documentation is
-still written in regular reStructuredText without any specific rules. RSDs must
-be very specific in what they define, so here is a couple rules that must be
-adhered to.</p>
+<p>This document specifies the commit message format.</p>
 </div>
-<div class="section" id="layout">
-<h1>1. Layout</h1>
-<p>[a] The document is written in reStructuredText format, which allows for
-in-place reading and generating HTML pages from it. The first two lines contain
-the name and index number of the document:</p>
+<div class="section" id="message">
+<h1>1. Message</h1>
+<p>[a] The title is made with 2 parts, a topic and short description:</p>
 <pre class="literal-block">
-RSD &lt;number&gt;: &lt;name&gt;
-====================
+&lt;topic&gt;: &lt;description&gt;
 </pre>
-<p>[b] After the title, some metadata is required to easily identify the document,
-like the header with copyright information, field with the full RSD name along
-with a description. Additionally, any changes in the document requires that the
-author increments a &quot;Revision&quot; counter so that a user will know exactly what
-version of the spec is used:</p>
-<pre class="literal-block">
-:Header: Copyright (c) &lt;year&gt; &lt;author&gt;
-:Name: &lt;name&gt;-&lt;id&gt;
-:Desc: &lt;short description&gt;
-:Revision: &lt;number&gt;
-</pre>
-<p>[c] After the metadata block, an &quot;Abstract&quot; is required summarizing the
-document itself. You may read the abstract in this document to get an idea of
-what it might look like.</p>
-<p>[d] The following sections should be numbered starting from 1, representing
-differing concepts:</p>
-<pre class="literal-block">
-1. Concept
-----------
-</pre>
-<p>[e] Each concept may have subsections, marked with square brackets and a lower
-case letter from the English alphabet, starting from a. If you run out of
-letters, the next subsections after 'z' should be named 'aa', 'ab' and so on:</p>
-<pre class="literal-block">
-[a] &lt;text&gt;
-[b] &lt;text&gt;
-...
-[z] &lt;text&gt;
-[aa] &lt;text&gt;
-[ab] &lt;text&gt;
-...
-</pre>
+<p>Both the topic and description are lowercase without any interpuction. The
+topic may be a file name or general topic, like <cite>parser</cite>. If the change affects
+everything or some non-code related issue, usually [b] <cite>meta</cite> for the topic is
+used.</p>
 </div>
-<div class="section" id="referencing">
-<h1>2. Referencing</h1>
-<p>You may reference a certain subsection in code in a comment by providing a
-relevant ID, which may be represented in 2 forms:</p>
-<pre class="literal-block">
-/* RSD 3/2a */
- or
-/* RSD cmdline/2a */
-</pre>
+<div class="section" id="content">
+<h1>2. Content</h1>
+<p>[a] The content of the commit message (below the title line) is basically free
+form, but readable English text with real sentences are prefferable.</p>
 </div>
 </div>
 </body>
